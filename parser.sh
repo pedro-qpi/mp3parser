@@ -1,23 +1,7 @@
 #!/bin/bash
+
 INFILE=$1
-#OUTFILE=$2
-#T_LIST=$3
 LIST=$2
-
-# i=0;
-# while read line
-# do 
-#  songs[i]=$line
-#  (( i++ ))
-# # echo "$i $line"
-# done < "$LIST"
-
-# echo ${#songs[*]}
-# 
-# for index in ${!songs[*]}
-# do
-#  echo $index ${songs[$index]}
-# done
 
 i=0
 cut -d' ' -f 1 "$LIST" > time.txt
