@@ -3,6 +3,9 @@
 INFILE=$1
 LIST=$2
 
+DIR=`echo "$INFILE" | sed 's/\.mp3//'`
+mkdir "$DIR"
+
 i=0
 cut -d' ' -f 1 "$LIST" > time.txt
 while read line
@@ -33,7 +36,7 @@ do
  start_t=`echo "${t_array[$index]}" | cut -d ' ' -f 1`
  end_t=`echo "${t_array[$index]}" | cut -d ' ' -f 2`
  
- ffmpeg -i "$INFILE" -ss "$start_t" -to "$end_t" -c copy "$(( $index +1 )) - ${s_array[$index]}".mp3 #>> ffmpeg_convert.log
+ffmpeg -i "$INFILE" -ss "$start_t" -to "$end_t" -c copy "$DIR/$(( $index +1 )) - ${s_array[$index]}".mp3 #>> ffmpeg_convert.log
 done
 
 rm time.txt
